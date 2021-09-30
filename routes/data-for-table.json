@@ -1,0 +1,44 @@
+[
+  {
+    "userId": "cf63e101-507c-4147-aa2c-25127cb328a8",
+    "firstName": "Marco",
+    "lastName": "Rossi",
+    "phoneNumber": "123456",
+    "emailAddress": "mr@gmail.com"
+  },
+  {
+    "userId": "e1b90ed6-7eb9-49c3-bb6c-00ffb88094e7",
+    "firstName": "Mario",
+    "lastName": "Verdi",
+    "phoneNumber": "98765",
+    "emailAddress": "mv@gmail.com"
+  },
+  {
+    "userId": "f62dc477-765e-400f-8b10-a4deb9654a5a",
+    "firstName": "Luca",
+    "lastName": "Ferrari",
+    "phoneNumber": "111111",
+    "emailAddress": "lf@gmail.com"
+  },
+  {
+    "userId": "dee7fd83-2087-4936-a9f4-0f5a0532dc53",
+    "firstName": "Alessio",
+    "lastName": "Romano",
+    "phoneNumber": "95969650",
+    "emailAddress": "ro.ale@gmail.com"
+  },
+  {
+    "userId": "213fddaa-17d1-4230-bec5-ed9ec842efad",
+    "firstName": "Francesco",
+    "lastName": "Bianchi",
+    "phoneNumber": "8787878",
+    "emailAddress": "fra.bia@gmail.com"
+  },
+  {
+    "userId": "61361b95-be29-4d11-aee6-5efd3e69530b",
+    "firstName": "Gianni",
+    "lastName": "Rovi",
+    "phoneNumber": "8432948",
+    "emailAddress": "gr@gmail.com"
+  }
+]
