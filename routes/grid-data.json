@@ -10,9 +10,41 @@
   {
     "id": "5eb7c0d8-22b9-41cd-8a07-ba00c0c3f314",
     "icon": "https://previews.123rf.com/images/sudowoodo/sudowoodo2003/sudowoodo200300038/142224178-cute-cartoon-character-working-from-home-remote-work-and-telecommuting-or-freelance-job-isolated-vec.jpg",
-    "title": "sandro",
+    "title": "Sandro",
     "position": "Savona",
-    "post": "dsadsdddddddddddddddddddddddddddddddddddddddddd ddddddddddddddd",
+    "post": "psum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,",
     "image": "/api/images/5eb7c0d8-22b9-41cd-8a07-ba00c0c3f314.jpeg"
+  },
+  {
+    "id": "f99267a8-2d17-4d83-8a78-3d0d4167c5de",
+    "icon": "https://previews.123rf.com/images/sudowoodo/sudowoodo2003/sudowoodo200300038/142224178-cute-cartoon-character-working-from-home-remote-work-and-telecommuting-or-freelance-job-isolated-vec.jpg",
+    "title": "Gino",
+    "position": "La Spezia",
+    "post": "Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.",
+    "image": "/api/images/f99267a8-2d17-4d83-8a78-3d0d4167c5de.png"
+  },
+  {
+    "id": "3d2c55a1-cbfb-437f-a4af-5de1a454d114",
+    "icon": "https://previews.123rf.com/images/sudowoodo/sudowoodo2003/sudowoodo200300038/142224178-cute-cartoon-character-working-from-home-remote-work-and-telecommuting-or-freelance-job-isolated-vec.jpg",
+    "title": "Pino",
+    "position": "Milano",
+    "post": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,",
+    "image": "/api/images/3d2c55a1-cbfb-437f-a4af-5de1a454d114.jpeg"
+  },
+  {
+    "id": "dea1419f-c4dd-419d-8407-6d65bb44d466",
+    "icon": "https://previews.123rf.com/images/sudowoodo/sudowoodo2003/sudowoodo200300038/142224178-cute-cartoon-character-working-from-home-remote-work-and-telecommuting-or-freelance-job-isolated-vec.jpg",
+    "title": "Franco",
+    "position": "Parigi",
+    "post": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+    "image": "/api/images/dea1419f-c4dd-419d-8407-6d65bb44d466.jpeg"
+  },
+  {
+    "id": "20faed72-407f-410d-a30e-2bcd960c753d",
+    "icon": "https://previews.123rf.com/images/sudowoodo/sudowoodo2003/sudowoodo200300038/142224178-cute-cartoon-character-working-from-home-remote-work-and-telecommuting-or-freelance-job-isolated-vec.jpg",
+    "title": "Andrea",
+    "position": "Torino",
+    "post": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem",
+    "image": "/api/images/20faed72-407f-410d-a30e-2bcd960c753d.png"
   }
 ]
