@@ -8,7 +8,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var gridRouter = require('./routes/grid');
 var passRouter = require('./routes/password');
-// var imageRouter = require('./routes/images');
 var cors = require('cors');
 
 var app = express();

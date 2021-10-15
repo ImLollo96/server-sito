@@ -6,7 +6,7 @@ router.use(express.urlencoded({ extended: false }));
 const data = (JSON.parse(fs.readFileSync(__dirname + '/data-for-table.json')));
 
 
-/* GET users listing. */
+/* GET users listing. */ 
 router.get('/', function(req, res) {
 	res.json(data);
 });
@@ -30,7 +30,7 @@ router.delete('/:id', function(req, res) {
 	fs.writeFileSync(__dirname + '/data-for-table.json', JSON.stringify(data, null, 2));
 });
 
-
+ 
 router.put('/:id', function(req, res) {
 	const id = req.params.id;
 	const n = req.body.firstName;
