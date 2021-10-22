@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var gridRouter = require('./routes/grid');
 var passRouter = require('./routes/password');
+var socketRouter = require('./routes/socket');
 var cors = require('cors');
 
 var app = express();
@@ -28,6 +29,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/grid', gridRouter);
 app.use('/password', passRouter);
+app.use('/socket', socketRouter);
 
 
 // catch 404 and forward to error handler
