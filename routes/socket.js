@@ -23,6 +23,10 @@ io.on('connection', (socket) => {
 		console.log(`SONO FUORI: ${socket.id}`);
 		delete [socket.id];
 	});
+
+	setInterval(() => {
+		socket.volatile.emit('chart', Array.from({ length: 8 }, () => Math.floor(Math.random() * 590) + 10));
+	}, 5000);
 });
 
 
