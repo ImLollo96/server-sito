@@ -1,8 +1,11 @@
 const express = require('express');
 var router = express.Router();
+var fs = require('fs');
 const cors = require('cors');
 const app = express();
 const http = require('http');
+router.use(express.json());
+const file = (JSON.parse(fs.readFileSync(__dirname + '/chat.json')));
 require('events').EventEmitter.defaultMaxListeners = 1000;
 const server = http.createServer(app);
 const io = require('socket.io')(server, { cors: { origin: '*' } });
@@ -16,26 +19,31 @@ app.get('/', function(req, res) {
 io.on('connection', (socket) => {
 	console.log(`UTENTE CONNESSO: ${socket.id}`);
 
-/** Servizio che genera un numero randomico e lo passa al FE con una certa cadenza */
+	let app = JSON.stringify(file);
+	app = JSON.parse(app);
+
+	/** Servizio che genera un numero randomico e lo passa al FE con una certa cadenza */
 	setInterval(() => {
 		socket.volatile.emit('random', Math.floor((Math.random() * 100) + 1));
 	}, 1000);
 
-/** Servizio che genera 8 valori e li passa al FE con una certa cadenza */
+	/** Servizio che genera 8 valori e li passa al FE con una certa cadenza */
 	setInterval(() => {
 		socket.volatile.emit('chart', Array.from({ length: 1 }, () => Math.floor(Math.random() * 100) + 1));
 	}, 3000);
 
-	socket.on('join', (data) =>{
-		socket.join(data.room);
-		socket.broadcast.to(data.room).emit('new user');
+
+	socket.emit('message-history', app);
+
+	socket.on('message', (data) => {
+		console.log(data);
+
+		file.push(data);
+		fs.writeFileSync(__dirname + '/chat.json', JSON.stringify(file, null, 2));
+		socket.volatile.broadcast.emit('message-broadcast', { user: data.user, message: data.message, when: data.when });
 	});
 
-	socket.on('message', (data) =>{
-		io.in(data.room).emit('new message', {user: data.user, message: data.message});
-	});
-
-/** Elimina il socket in utilizzo */
+	/** Elimina il socket in utilizzo */
 	socket.on('disconnect', () => {
 		console.log(`SONO FUORI: ${socket.id}`);
 		delete [socket.id];

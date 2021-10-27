@@ -4,7 +4,7 @@ var fs = require('fs');
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 const data = (JSON.parse(fs.readFileSync(__dirname + '/data-for-table.json')));
-
+ 
 
 /* GET users listing. */ 
 router.get('/', function(req, res) {
