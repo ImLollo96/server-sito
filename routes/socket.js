@@ -19,8 +19,7 @@ app.get('/', function(req, res) {
 io.on('connection', (socket) => {
 	console.log(`UTENTE CONNESSO: ${socket.id}`);
 
-	let app = JSON.stringify(file);
-	app = JSON.parse(app);
+	 
 
 	/** Servizio che genera un numero randomico e lo passa al FE con una certa cadenza */
 	setInterval(() => {
@@ -32,15 +31,38 @@ io.on('connection', (socket) => {
 		socket.volatile.emit('chart', Array.from({ length: 1 }, () => Math.floor(Math.random() * 100) + 1));
 	}, 3000);
 
+	/** Emit log dei messaggi */
+	setInterval(() => {
+		let app = JSON.stringify(file);
+		app = JSON.parse(app);
+		socket.emit('message-history', app);
+	}, 1000);
 
-	socket.emit('message-history', app);
+	/** Delete dei messaggi */
+	socket.on('delete', (id) => {
+		const index = file.findIndex((res) => res.id === id);
+		console.log('INDEX: ', index);
+		file.splice(index, 1);
+		fs.writeFileSync(__dirname + '/chat.json', JSON.stringify(file, null, 2));
+	});
 
+	/** Edit dei messaggi */
+	socket.on('edit', (id, data) => {
+		const arr = file.find((res) => res.id === id);
+		const dt = arr;
+		dt.id = data.id;
+		dt.user = data.user;
+		dt.message = data.message;
+		dt.when = data.when;
+		fs.writeFileSync(__dirname + '/chat.json', JSON.stringify(file, null, 2));
+	});
+
+	/** Salvataggio e broadcast dei messaggi */
 	socket.on('message', (data) => {
 		console.log(data);
-
 		file.push(data);
 		fs.writeFileSync(__dirname + '/chat.json', JSON.stringify(file, null, 2));
-		socket.volatile.broadcast.emit('message-broadcast', { user: data.user, message: data.message, when: data.when });
+		socket.volatile.broadcast.emit('message-broadcast', { id: data.id, user: data.user, message: data.message, when: data.when });
 	});
 
 	/** Elimina il socket in utilizzo */

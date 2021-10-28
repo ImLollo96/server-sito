@@ -10,7 +10,7 @@ const data = (JSON.parse(fs.readFileSync(__dirname + '/data-for-table.json')));
 router.get('/', function(req, res) {
 	res.json(data);
 });
-
+ 
 router.post('/', function(req, res) {
 	const dati = req.body;
 	data.push(dati);
@@ -30,7 +30,7 @@ router.delete('/:id', function(req, res) {
 	fs.writeFileSync(__dirname + '/data-for-table.json', JSON.stringify(data, null, 2));
 });
 
- 
+  
 router.put('/:id', function(req, res) {
 	const id = req.params.id;
 	const n = req.body.firstName;
