@@ -9,16 +9,17 @@ const file = (JSON.parse(fs.readFileSync(__dirname + '/chat.json')));
 require('events').EventEmitter.defaultMaxListeners = 1000;
 const server = http.createServer(app);
 const io = require('socket.io')(server, { cors: { origin: '*' } });
+app.use(cors());
 
-
+/** Invia tutti i messaggi nel file */
 app.get('/', function(req, res) {
-	res.send('HELLO');
+	res.send(file);
 });
 
 /** Gestisce le connessioni al BE dal FE */
 io.on('connection', (socket) => {
 	console.log(`UTENTE CONNESSO: ${socket.id}`);
-
+ 
 	 
 
 	/** Servizio che genera un numero randomico e lo passa al FE con una certa cadenza */
@@ -31,19 +32,16 @@ io.on('connection', (socket) => {
 		socket.volatile.emit('chart', Array.from({ length: 1 }, () => Math.floor(Math.random() * 100) + 1));
 	}, 3000);
 
-	/** Emit log dei messaggi */
-	setInterval(() => {
-		let app = JSON.stringify(file);
-		app = JSON.parse(app);
-		socket.emit('message-history', app);
-	}, 1000);
 
 	/** Delete dei messaggi */
 	socket.on('delete', (id) => {
 		const index = file.findIndex((res) => res.id === id);
 		console.log('INDEX: ', index);
 		file.splice(index, 1);
+		socket.volatile.broadcast.emit('message-delete', id);	/** Comunica che il messaggio con quell'ID è stato eliminato */
 		fs.writeFileSync(__dirname + '/chat.json', JSON.stringify(file, null, 2));
+
+		
 	});
 
 	/** Edit dei messaggi */
@@ -54,7 +52,9 @@ io.on('connection', (socket) => {
 		dt.user = data.user;
 		dt.message = data.message;
 		dt.when = data.when;
+		socket.volatile.broadcast.emit('message-edit', id, data);	/** Comunica che il messaggio con quell'ID è stato modificato e come */
 		fs.writeFileSync(__dirname + '/chat.json', JSON.stringify(file, null, 2));
+		
 	});
 
 	/** Salvataggio e broadcast dei messaggi */
